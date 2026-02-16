@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autoescola Cristal</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -12,18 +13,15 @@
         <section id="page1" class="page active">
             <div class="hero-content">
                 <img src="logo.png" alt="Logo Autoescola Cristal" class="logo-cristal">
-                
-                <h1>AUTOESCOLA CRISTAL</h1>
-                <p>Sua aprovação é o nosso compromisso. Conheça nossos planos e comece sua jornada hoje mesmo.</p>
-                
+                <h1>AUTOESCOLA <span class="accent">CRISTAL</span></h1>
+                <p class="hero-subtitle">Sua aprovação é o nosso compromisso. Conheça nossos planos e comece sua jornada hoje mesmo.</p>
                 <button class="btn-primary btn-hero" onclick="showPage(2)">CONHECER OS PLANOS</button>
             </div>
 
             <footer class="footer-inicio">
-                <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Monsenhor+Tabosa,+1658+-+Coqueiro+-+Itapipoca-CE" target="_blank" class="address-link">
-                    Endereço: Avenida Monsenhor Tabosa, 1658 - Coqueiro - Itapipoca-CE
+                <a href="https://maps.app.goo.gl/pDvc5JY3ivrWkUuM9" target="_blank" class="address-link">
+                    <span class="icon">📍</span> Avenida Monsenhor Tabosa, 1658 - Coqueiro - Itapipoca-CE
                 </a>
-                
                 <div class="social-links">
                     <button class="btn-social btn-instagram" onclick="window.open('https://instagram.com/auto.escolacristal')">INSTAGRAM</button>
                     <button class="btn-social btn-whatsapp-footer" onclick="contactWhats()">WHATSAPP</button>
@@ -32,35 +30,45 @@
         </section>
 
         <section id="page2" class="page">
-            <h2 class="section-title">Escolha sua Categoria</h2>
+            <h2 class="section-title">Escolha sua <span class="accent">Categoria</span></h2>
             <div class="card-grid">
                 <div class="card cat-card" onclick="selectCategory(0, 'Categoria A')">
                     <div class="card-img" style="background-image: url('moto.jpg');"></div>
-                    <h3>CATEGORIA A</h3>
-                    <p>Habilitação para Motos</p>
+                    <div class="card-info">
+                        <h3>CATEGORIA A</h3>
+                        <p>Habilitação para Motos</p>
+                    </div>
                 </div>
                 <div class="card cat-card" onclick="selectCategory(1, 'Categoria B')">
                     <div class="card-img" style="background-image: url('carro.jpg');"></div>
-                    <h3>CATEGORIA B</h3>
-                    <p>Habilitação para Carros</p>
+                    <div class="card-info">
+                        <h3>CATEGORIA B</h3>
+                        <p>Habilitação para Carros</p>
+                    </div>
                 </div>
                 <div class="card cat-card" onclick="selectCategory(2, 'Categoria AB')">
                     <div class="card-img" style="background-image: url('carroemoto.jpg');"></div>
-                    <h3>CATEGORIA AB</h3>
-                    <p>Carro e Moto juntos</p>
+                    <div class="card-info">
+                        <h3>CATEGORIA AB</h3>
+                        <p>Carro e Moto juntos</p>
+                    </div>
                 </div>
                 <div class="card cat-card" onclick="selectCategory(3, 'Inclusão A')">
-                    <div class="card-img" style="background-image: url('inclusao.jpg');"></div>
-                    <h3>INCLUSÃO A</h3>
-                    <p>Já tem B, adicione A</p>
+                    <div class="card-img" style="background-image: url('inclusao_a.jpg');"></div>
+                    <div class="card-info">
+                        <h3>INCLUSÃO A</h3>
+                        <p>Já tem B, adicione A</p>
+                    </div>
                 </div>
                 <div class="card cat-card" onclick="selectCategory(4, 'Inclusão B')">
-                    <div class="card-img" style="background-image: url('inclusao.jpg');"></div>
-                    <h3>INCLUSÃO B</h3>
-                    <p>Já tem A, adicione B</p>
+                    <div class="card-img" style="background-image: url('inclusao_b.jpg');"></div>
+                    <div class="card-info">
+                        <h3>INCLUSÃO B</h3>
+                        <p>Já tem A, adicione B</p>
+                    </div>
                 </div>
             </div>
-            <button class="btn-text" onclick="showPage(1)">← Voltar</button>
+            <button class="btn-text" onclick="showPage(1)">← Voltar ao início</button>
         </section>
 
         <section id="page3" class="page">
@@ -70,7 +78,7 @@
         </section>
 
         <section id="page4" class="page">
-            <h2 class="section-title">Seu Orçamento</h2>
+            <h2 class="section-title">Seu <span class="accent">Orçamento</span></h2>
             <div id="result-display" class="result-box"></div>
             <div class="action-buttons">
                 <button class="btn-primary btn-whatsapp" onclick="contactWhats()">FALAR COM CONSULTOR</button>
