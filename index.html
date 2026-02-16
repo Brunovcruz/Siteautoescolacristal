@@ -11,10 +11,21 @@
     <div class="container">
         <section id="page1" class="page active">
             <div class="hero-content">
+                <img src="logo.png" alt="Logo Autoescola Cristal" class="logo-cristal">
+                
                 <h1>AUTOESCOLA CRISTAL</h1>
                 <p>Sua aprovação é o nosso compromisso. Conheça nossos planos e comece sua jornada hoje mesmo.</p>
-                <button class="btn-primary" onclick="showPage(2)">CONHECER OS PLANOS</button>
+                
+                <button class="btn-primary btn-hero" onclick="showPage(2)">CONHECER OS PLANOS</button>
             </div>
+
+            <footer class="footer-inicio">
+                <p>Endereço: Avenida Monsenhor Tabosa, 1658 - Coqueiro - Itapipoca-CE</p>
+                <div class="social-links">
+                    <button class="btn-social btn-instagram" onclick="window.open('https://instagram.com/seu_perfil')">INSTAGRAM</button>
+                    <button class="btn-social btn-whatsapp-footer" onclick="contactWhats()">WHATSAPP</button>
+                </div>
+            </footer>
         </section>
 
         <section id="page2" class="page">
@@ -51,8 +62,7 @@
 
         <section id="page3" class="page">
             <h2 class="section-title" id="cat-title">Pacotes Disponíveis</h2>
-            <div class="card-grid" id="pacotes-grid">
-                </div>
+            <div class="card-grid" id="pacotes-grid"></div>
             <button class="btn-text" onclick="showPage(2)">← Escolher outra categoria</button>
         </section>
 

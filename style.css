@@ -2,7 +2,7 @@
     --primary: #1a2a6c;
     --secondary: #b21f1f;
     --success: #25d366;
-    --bg: #f8f9fa;
+    --bg: #ffffff; /* Fundo alterado para branco */
     --text: #333;
 }
 
@@ -15,23 +15,67 @@ body {
     line-height: 1.6;
 }
 
-.container { width: 100%; max-width: 1200px; margin: 0 auto; min-height: 100vh; }
+.container { width: 100%; max-width: 1200px; margin: 0 auto; min-height: 100vh; position: relative; }
 
 /* Páginas */
-.page { display: none; padding: 40px 20px; animation: fadeIn 0.5s ease; flex-direction: column; align-items: center; }
+.page { display: none; padding: 40px 20px; animation: fadeIn 0.5s ease; flex-direction: column; align-items: center; min-height: 100vh; }
 .page.active { display: flex; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Página 1 */
+/* Estilo Página 1 - Agora com fundo branco */
 #page1 {
-    height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('fachada.jpg');
-    background-size: cover; background-position: center;
-    color: white; justify-content: center; text-align: center;
+    justify-content: space-between; /* Empurra o rodapé para baixo */
+    text-align: center;
+    background: var(--bg);
+    color: var(--text);
 }
 
-/* Grid de Cards */
+.hero-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-cristal {
+    max-width: 250px; /* Ajuste o tamanho da sua logo aqui */
+    height: auto;
+    margin-bottom: 30px;
+}
+
+/* Botão Conhecer Planos mais baixo */
+.btn-hero {
+    margin-top: 60px; /* Aumenta o espaço acima do botão */
+}
+
+/* Estilo do Rodapé */
+.footer-inicio {
+    width: 100%;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.social-links {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn-social {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    color: white;
+}
+
+.btn-instagram { background: #E1306C; }
+.btn-whatsapp-footer { background: var(--success); }
+
+/* Grid de Cards (Páginas seguintes) */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -47,25 +91,16 @@ body {
 }
 
 .card:hover { transform: translateY(-10px); }
-
 .card-img { height: 150px; background-size: cover; background-position: center; background-color: #ddd; }
-
 .card h3 { margin: 15px 0 5px; color: var(--primary); }
 .card p { padding: 0 15px 20px; font-size: 0.9rem; color: #666; }
 
-/* Estilo Pacotes */
-.price-tag { font-size: 1.5rem; font-weight: bold; color: var(--primary); margin-bottom: 10px; }
-.features { list-style: none; padding: 0 15px 20px; text-align: left; font-size: 0.85rem; }
-.features li { margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 2px; }
-
-/* Botões */
+/* Botões Gerais */
 button { border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
 .btn-primary { background: var(--primary); color: white; padding: 15px 40px; font-size: 1rem; }
 .btn-secondary { background: #666; color: white; padding: 12px 25px; }
-.btn-whatsapp { background: var(--success); }
 .btn-text { background: transparent; color: var(--primary); padding: 20px; text-decoration: underline; }
 
-/* Orçamento Final */
 .result-box {
     background: white; padding: 30px; border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 500px;
