@@ -1,5 +1,5 @@
-const precosA = { 2: 300, 4: 475, 6: 650.10, 8: 825.12, 10: 1000 };
-const precosB = { 2: 300, 4: 525, 6: 750, 8: 974.96, 10: 1200 };
+const precosA = { 2: 300, 4: 475, 6: 650, 8: 825, 10: 1000 };
+const precosB = { 2: 300, 4: 525, 6: 750, 8: 975, 10: 1200 };
 
 let catSelecionada = -1;
 let nomeCat = "";
@@ -22,6 +22,30 @@ function renderizarPacotes() {
     const grid = document.getElementById('pacotes-grid');
     grid.innerHTML = "";
     
+    if (catSelecionada == 2) {
+        grid.innerHTML = `
+            <div class="ab-custom-box">
+                <h3>Monte seu plano AB</h3>
+                <p>Escolha a quantidade de aulas para cada categoria:</p>
+                <div class="ab-controls">
+                    <div>
+                        <label>Moto (A):</label>
+                        <select id="customA">
+                            ${[2,4,6,8,10].map(n => `<option value="${n}">${n} Aulas</option>`).join('')}
+                        </select>
+                    </div>
+                    <div>
+                        <label>Carro (B):</label>
+                        <select id="customB">
+                            ${[2,4,6,8,10].map(n => `<option value="${n}">${n} Aulas</option>`).join('')}
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="calcularABPersonalizado()">CALCULAR E SELECIONAR</button>
+            </div>
+        `;
+    }
+
     const pacotesAulas = [2, 4, 6, 8, 10]; 
 
     pacotesAulas.forEach(qtd => {
@@ -29,60 +53,72 @@ function renderizarPacotes() {
         let desc = "";
 
         if (catSelecionada == 0 || catSelecionada == 3) {
-            precoEscola = precosA[qtd] + (qtd <= 4 ? 100 : 0);
+            precoEscola = precosA[qtd] + (qtd <= 4 && catSelecionada != 2 ? 100 : 0);
             desc = `${qtd} Aulas Práticas de Moto`;
         } else if (catSelecionada == 1 || catSelecionada == 4) {
-            precoEscola = precosB[qtd] + (qtd <= 4 ? 100 : 0);
+            precoEscola = precosB[qtd] + (qtd <= 4 && catSelecionada != 2 ? 100 : 0);
             desc = `${qtd} Aulas Práticas de Carro`;
         } else if (catSelecionada == 2) {
             precoEscola = precosA[qtd] + precosB[qtd] + (qtd*2 <= 8 ? 100 : 0);
             desc = `${qtd} Aulas de Moto + ${qtd} Aulas de Carro`;
         }
 
-        let taxaDetran = (catSelecionada == 2) ? 1010.21 : (catSelecionada >= 3 ? 510.75 : 834.23);
+        const materialTexto = (catSelecionada != 3 && catSelecionada != 4) ? 
+            `<li>Material Didático</li>` : "";
+
+        // Lógica de Interação: Destaque para o plano de 2 aulas
+        const isPopular = (qtd === 2);
+        const popularTag = isPopular ? `<div class="popular-badge">POPULAR 🔥</div>` : "";
+        const popularClass = isPopular ? "card-popular" : "";
 
         grid.innerHTML += `
-            <div class="card" onclick="finalizarOrcamento('${qtd}', ${precoEscola}, ${taxaDetran})">
+            <div class="card ${popularClass}">
+                ${popularTag}
                 <div class="card-img" style="background-image: url('pacote_${qtd}.jpg');"></div>
-                <div class="card-info">
+                <div class="card-info center-text">
                     <h3>Plano ${qtd} Aulas</h3>
-                    <p class="price-tag">R$ ${precoEscola.toFixed(2)}</p>
+                    <p class="price-tag">R$ ${Math.round(precoEscola)},00</p>
                     <ul class="features">
                         <li>${desc}</li>
-                        <li>Material Didático Incluso</li>
-                        <li style="color: #e67e22; font-weight: 600;">⚠️ Taxas Detran/Clínica à parte</li>
+                        ${materialTexto}
+                        <li>Acompanhamento completo</li>
+                        <li style="color: #e67e22; font-weight: 600;">Taxas Detran/Clínica à parte</li>
                     </ul>
-                    <button class="btn-primary" style="width:100%; padding: 12px;">SELECIONAR</button>
+                    <button class="btn-primary" style="width:100%; padding: 12px; margin-top: 15px;" 
+                            onclick="gerarOrcamentoFinal('${qtd}', ${precoEscola})">SELECIONAR</button>
                 </div>
             </div>
         `;
     });
-
-    if (catSelecionada == 2) {
-        grid.innerHTML += `
-            <div class="card" style="border-top: 5px solid var(--accent)">
-                <div class="card-img" style="background-image: url('custom.jpg');"></div>
-                <div class="card-info">
-                    <h3>Personalizado</h3>
-                    <p style="margin-bottom: 20px;">Monte seu plano conforme sua necessidade específica.</p>
-                    <button class="btn-primary" style="background:var(--accent); width:100%" onclick="contactWhats()">WHATSAPP</button>
-                </div>
-            </div>
-        `;
-    }
 }
 
-function finalizarOrcamento(qtd, escola, taxas) {
-    document.getElementById('result-display').innerHTML = `
-        <h3 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 10px;">${nomeCat}</h3>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">Plano contratado: ${qtd} Aulas</p>
-        <div style="text-align: left; background: #f9f9f9; padding: 20px; border-radius: 15px;">
-            <p style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                <span>Valor Autoescola:</span>
-                <strong>R$ ${escola.toFixed(2)}</strong>
-            </p>
-            <p style="color: #666; font-size: 0.85rem; border-top: 1px solid #eee; pt-10; margin-top: 10px;">
-                * As taxas do Detran e Clínica serão detalhadas no seu atendimento via WhatsApp.
+function calcularABPersonalizado() {
+    const qA = parseInt(document.getElementById('customA').value);
+    const qB = parseInt(document.getElementById('customB').value);
+    
+    let precoEscola = precosA[qA] + precosB[qB];
+    if ((qA + qB) <= 8) precoEscola += 100;
+
+    gerarOrcamentoFinal(`${qA}A + ${qB}B`, precoEscola);
+}
+
+function gerarOrcamentoFinal(qtd, escola) {
+    const display = document.getElementById('result-display');
+    let material = (catSelecionada != 3 && catSelecionada != 4) ? 
+        `<div class="service-item"><span>Material Didático</span> <strong>Sim</strong></div>` : "";
+
+    display.innerHTML = `
+        <h3 style="color: var(--primary); margin-bottom: 20px; border-bottom: 2px solid var(--accent); padding-bottom: 10px;">${nomeCat}</h3>
+        <div class="orcamento-detalhes">
+            <div class="service-item"><span>Aulas contratadas:</span> <strong>${qtd}</strong></div>
+            ${material}
+            <div class="service-item"><span>Acompanhamento:</span> <strong>Completo</strong></div>
+            <div class="service-item" style="border-top: 2px solid var(--primary); margin-top: 15px; padding-top: 15px;">
+                <span>VALOR AUTOESCOLA</span>
+                <strong style="font-size: 1.5rem;">R$ ${Math.round(escola)},00</strong>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 20px;">
+                Taxas de Detran e Clínica não inclusas. Atendimento via WhatsApp para finalização.
             </p>
         </div>
     `;
@@ -90,5 +126,5 @@ function finalizarOrcamento(qtd, escola, taxas) {
 }
 
 function contactWhats() {
-    window.open("https://wa.me/5588999138424?text=Olá! Acabei de fazer um orçamento no site e gostaria de seguir com o atendimento.");
+    window.open("https://wa.me/5588999138424?text=Olá! Fiz um orçamento de " + nomeCat + " e gostaria de tirar dúvidas.");
 }
