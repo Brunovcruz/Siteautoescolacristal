@@ -46,7 +46,7 @@ function renderizarPacotes() {
         `;
     }
 
-    const pacotesAulas = [2, 4, 6, 8, 10]; 
+    const pacotesAulas = [2, 4, 6, 8, 10];
 
     pacotesAulas.forEach(qtd => {
         let precoEscola = 0;
@@ -63,10 +63,9 @@ function renderizarPacotes() {
             desc = `${qtd} Aulas de Moto + ${qtd} Aulas de Carro`;
         }
 
-        const materialTexto = (catSelecionada != 3 && catSelecionada != 4) ? 
+        const materialTexto = (catSelecionada != 3 && catSelecionada != 4) ?
             `<li>Material Didático</li>` : "";
 
-        // Lógica de Interação: Destaque para o plano de 2 aulas
         const isPopular = (qtd === 2);
         const popularTag = isPopular ? `<div class="popular-badge">POPULAR 🔥</div>` : "";
         const popularClass = isPopular ? "card-popular" : "";
@@ -84,7 +83,7 @@ function renderizarPacotes() {
                         <li>Acompanhamento completo</li>
                         <li style="color: #e67e22; font-weight: 600;">Taxas Detran/Clínica à parte</li>
                     </ul>
-                    <button class="btn-primary" style="width:100%; padding: 12px; margin-top: 15px;" 
+                    <button class="btn-primary" style="width:100%; padding: 12px; margin-top: 15px;"
                             onclick="gerarOrcamentoFinal('${qtd}', ${precoEscola})">SELECIONAR</button>
                 </div>
             </div>
@@ -95,16 +94,14 @@ function renderizarPacotes() {
 function calcularABPersonalizado() {
     const qA = parseInt(document.getElementById('customA').value);
     const qB = parseInt(document.getElementById('customB').value);
-    
     let precoEscola = precosA[qA] + precosB[qB];
     if ((qA + qB) <= 8) precoEscola += 100;
-
     gerarOrcamentoFinal(`${qA}A + ${qB}B`, precoEscola);
 }
 
 function gerarOrcamentoFinal(qtd, escola) {
     const display = document.getElementById('result-display');
-    let material = (catSelecionada != 3 && catSelecionada != 4) ? 
+    let material = (catSelecionada != 3 && catSelecionada != 4) ?
         `<div class="service-item"><span>Material Didático</span> <strong>Sim</strong></div>` : "";
 
     display.innerHTML = `
