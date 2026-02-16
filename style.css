@@ -2,7 +2,7 @@
     --primary: #1a2a6c;
     --secondary: #b21f1f;
     --success: #25d366;
-    --bg: #ffffff; /* Fundo alterado para branco */
+    --bg: #ffffff;
     --text: #333;
 }
 
@@ -23,12 +23,11 @@ body {
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* Estilo Página 1 - Agora com fundo branco */
+/* Estilo Página 1 */
 #page1 {
-    justify-content: space-between; /* Empurra o rodapé para baixo */
+    justify-content: space-between;
     text-align: center;
     background: var(--bg);
-    color: var(--text);
 }
 
 .hero-content {
@@ -40,23 +39,32 @@ body {
 }
 
 .logo-cristal {
-    max-width: 250px; /* Ajuste o tamanho da sua logo aqui */
+    max-width: 250px;
     height: auto;
     margin-bottom: 30px;
 }
 
-/* Botão Conhecer Planos mais baixo */
 .btn-hero {
-    margin-top: 60px; /* Aumenta o espaço acima do botão */
+    margin-top: 60px;
 }
 
-/* Estilo do Rodapé */
+/* Estilo do Rodapé e Link de Endereço */
 .footer-inicio {
     width: 100%;
     padding: 20px;
     border-top: 1px solid #eee;
-    font-size: 0.9rem;
+}
+
+.address-link {
+    text-decoration: none;
     color: #666;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.address-link:hover {
+    color: var(--primary);
+    text-decoration: underline;
 }
 
 .social-links {
@@ -75,7 +83,7 @@ body {
 .btn-instagram { background: #E1306C; }
 .btn-whatsapp-footer { background: var(--success); }
 
-/* Grid de Cards (Páginas seguintes) */
+/* Grid de Cards (Páginas seguintes - mantidos) */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
