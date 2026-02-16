@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoescola Cristal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <section id="page1" class="page active">
+            <div class="hero-content">
+                <h1>AUTOESCOLA CRISTAL</h1>
+                <p>Sua aprovação é o nosso compromisso. Conheça nossos planos e comece sua jornada hoje mesmo.</p>
+                <button class="btn-main" onclick="showPage(2)">CONHECER OS PLANOS</button>
+            </div>
+        </section>
+
+        <section id="page2" class="page">
+            <h2>Escolha sua Categoria</h2>
+            <div class="grid-buttons">
+                <button onclick="selectCategory(0, 'Categoria A (Moto)')">CATEGORIA A</button>
+                <button onclick="selectCategory(1, 'Categoria B (Carro)')">CATEGORIA B</button>
+                <button onclick="selectCategory(2, 'Categoria AB (Carro e Moto)')">CATEGORIA AB</button>
+                <button onclick="selectCategory(3, 'Inclusão A')">INCLUSÃO A</button>
+                <button onclick="selectCategory(4, 'Inclusão B')">INCLUSÃO B</button>
+            </div>
+            <button class="btn-back" onclick="showPage(1)">← Voltar</button>
+        </section>
+
+        <section id="page3" class="page">
+            <h2 id="cat-title">Selecione o Pacote</h2>
+            <div class="form-container">
+                <div id="areaAulasA" class="input-group">
+                    <label>Aulas de Moto (A):</label>
+                    <select id="aulasA">
+                        <option value="2">2 aulas</option>
+                        <option value="4">4 aulas</option>
+                        <option value="6">6 aulas</option>
+                        <option value="8">8 aulas</option>
+                        <option value="10">10 aulas</option>
+                    </select>
+                </div>
+                <div id="areaAulasB" class="input-group">
+                    <label>Aulas de Carro (B):</label>
+                    <select id="aulasB">
+                        <option value="2">2 aulas</option>
+                        <option value="4">4 aulas</option>
+                        <option value="6">6 aulas</option>
+                        <option value="8">8 aulas</option>
+                        <option value="10">10 aulas</option>
+                    </select>
+                </div>
+                <button class="btn-main" onclick="generateOrcamento()">VER VALORES</button>
+                <button class="btn-back" onclick="showPage(2)">← Voltar</button>
+            </div>
+        </section>
+
+        <section id="page4" class="page">
+            <h2>Seu Orçamento</h2>
+            <div id="result-display" class="result-card"></div>
+            <div class="actions">
+                <button class="btn-pdf" onclick="window.print()">SALVAR PDF</button>
+                <button class="btn-whats" onclick="contactWhats()">FALAR NO WHATSAPP</button>
+                <button class="btn-back" onclick="showPage(1)">NOVO ORÇAMENTO</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
