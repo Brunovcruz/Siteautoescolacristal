@@ -1,69 +1,72 @@
+:root {
+    --primary: #1a2a6c;
+    --secondary: #b21f1f;
+    --success: #25d366;
+    --bg: #f8f9fa;
+    --text: #333;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body, html {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f0f2f5;
-    min-height: 100vh;
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
 }
 
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: 100vh;
-    background: white;
-    display: flex;
-    flex-direction: column;
-}
+.container { width: 100%; max-width: 1200px; margin: 0 auto; min-height: 100vh; }
 
-/* Sistema de Páginas */
-.page {
-    display: none; /* Esconde todas */
-    padding: 40px 5%;
-    flex: 1;
-    animation: fadeIn 0.4s ease;
-}
+/* Páginas */
+.page { display: none; padding: 40px 20px; animation: fadeIn 0.5s ease; flex-direction: column; align-items: center; }
+.page.active { display: flex; }
 
-.page.active {
-    display: flex; /* Mostra só a ativa */
-    flex-direction: column;
-    justify-content: center;
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-/* Hero Page 1 */
+/* Página 1 */
 #page1 {
-    background: linear-gradient(rgba(26, 42, 108, 0.85), rgba(26, 42, 108, 0.85)), 
-                url('https://images.unsplash.com/photo-1449960232330-413952726a6d?q=80&w=2000');
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('fachada.jpg');
     background-size: cover; background-position: center;
-    color: white; text-align: center;
+    color: white; justify-content: center; text-align: center;
 }
 
-h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 20px; }
-
-/* Botões e Grids */
-.grid-buttons {
+/* Grid de Cards */
+.card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px; margin: 20px 0;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; width: 100%; padding: 20px 0;
 }
 
-button {
-    padding: 18px; border-radius: 12px; font-weight: bold;
-    cursor: pointer; border: none; transition: 0.3s;
+.card {
+    background: white; border-radius: 15px; overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s; cursor: pointer;
+    display: flex; flex-direction: column; text-align: center;
+    border-top: 5px solid var(--primary);
 }
 
-.btn-main { background: #1a2a6c; color: white; max-width: 350px; align-self: center; }
-.btn-back { background: transparent; color: #666; text-decoration: underline; }
-.btn-whats { background: #25d366; color: white; }
-.btn-pdf { background: #e74c3c; color: white; }
+.card:hover { transform: translateY(-10px); }
 
-.grid-buttons button { background: white; border: 2px solid #1a2a6c; color: #1a2a6c; }
-.grid-buttons button:hover { background: #1a2a6c; color: white; }
+.card-img { height: 150px; background-size: cover; background-position: center; background-color: #ddd; }
 
-/* Orçamento */
-.result-card {
-    background: #f8f9fa; padding: 25px; border-radius: 15px;
-    border-left: 8px solid #1a2a6c; margin: 20px auto; width: 100%; max-width: 500px;
+.card h3 { margin: 15px 0 5px; color: var(--primary); }
+.card p { padding: 0 15px 20px; font-size: 0.9rem; color: #666; }
+
+/* Estilo Pacotes */
+.price-tag { font-size: 1.5rem; font-weight: bold; color: var(--primary); margin-bottom: 10px; }
+.features { list-style: none; padding: 0 15px 20px; text-align: left; font-size: 0.85rem; }
+.features li { margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 2px; }
+
+/* Botões */
+button { border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.btn-primary { background: var(--primary); color: white; padding: 15px 40px; font-size: 1rem; }
+.btn-secondary { background: #666; color: white; padding: 12px 25px; }
+.btn-whatsapp { background: var(--success); }
+.btn-text { background: transparent; color: var(--primary); padding: 20px; text-decoration: underline; }
+
+/* Orçamento Final */
+.result-box {
+    background: white; padding: 30px; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 500px;
 }

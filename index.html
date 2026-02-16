@@ -13,57 +13,56 @@
             <div class="hero-content">
                 <h1>AUTOESCOLA CRISTAL</h1>
                 <p>Sua aprovação é o nosso compromisso. Conheça nossos planos e comece sua jornada hoje mesmo.</p>
-                <button class="btn-main" onclick="showPage(2)">CONHECER OS PLANOS</button>
+                <button class="btn-primary" onclick="showPage(2)">CONHECER OS PLANOS</button>
             </div>
         </section>
 
         <section id="page2" class="page">
-            <h2>Escolha sua Categoria</h2>
-            <div class="grid-buttons">
-                <button onclick="selectCategory(0, 'Categoria A (Moto)')">CATEGORIA A</button>
-                <button onclick="selectCategory(1, 'Categoria B (Carro)')">CATEGORIA B</button>
-                <button onclick="selectCategory(2, 'Categoria AB (Carro e Moto)')">CATEGORIA AB</button>
-                <button onclick="selectCategory(3, 'Inclusão A')">INCLUSÃO A</button>
-                <button onclick="selectCategory(4, 'Inclusão B')">INCLUSÃO B</button>
+            <h2 class="section-title">Escolha sua Categoria</h2>
+            <div class="card-grid">
+                <div class="card cat-card" onclick="selectCategory(0, 'Categoria A')">
+                    <div class="card-img" style="background-image: url('moto.jpg');"></div>
+                    <h3>CATEGORIA A</h3>
+                    <p>Habilitação para Motos</p>
+                </div>
+                <div class="card cat-card" onclick="selectCategory(1, 'Categoria B')">
+                    <div class="card-img" style="background-image: url('carro.jpg');"></div>
+                    <h3>CATEGORIA B</h3>
+                    <p>Habilitação para Carros</p>
+                </div>
+                <div class="card cat-card" onclick="selectCategory(2, 'Categoria AB')">
+                    <div class="card-img" style="background-image: url('carroemoto.jpg');"></div>
+                    <h3>CATEGORIA AB</h3>
+                    <p>Carro e Moto juntos</p>
+                </div>
+                <div class="card cat-card" onclick="selectCategory(3, 'Inclusão A')">
+                    <div class="card-img" style="background-image: url('inclusao.jpg');"></div>
+                    <h3>INCLUSÃO A</h3>
+                    <p>Já tem B, adicione A</p>
+                </div>
+                <div class="card cat-card" onclick="selectCategory(4, 'Inclusão B')">
+                    <div class="card-img" style="background-image: url('inclusao.jpg');"></div>
+                    <h3>INCLUSÃO B</h3>
+                    <p>Já tem A, adicione B</p>
+                </div>
             </div>
-            <button class="btn-back" onclick="showPage(1)">← Voltar</button>
+            <button class="btn-text" onclick="showPage(1)">← Voltar</button>
         </section>
 
         <section id="page3" class="page">
-            <h2 id="cat-title">Selecione o Pacote</h2>
-            <div class="form-container">
-                <div id="areaAulasA" class="input-group">
-                    <label>Aulas de Moto (A):</label>
-                    <select id="aulasA">
-                        <option value="2">2 aulas</option>
-                        <option value="4">4 aulas</option>
-                        <option value="6">6 aulas</option>
-                        <option value="8">8 aulas</option>
-                        <option value="10">10 aulas</option>
-                    </select>
+            <h2 class="section-title" id="cat-title">Pacotes Disponíveis</h2>
+            <div class="card-grid" id="pacotes-grid">
                 </div>
-                <div id="areaAulasB" class="input-group">
-                    <label>Aulas de Carro (B):</label>
-                    <select id="aulasB">
-                        <option value="2">2 aulas</option>
-                        <option value="4">4 aulas</option>
-                        <option value="6">6 aulas</option>
-                        <option value="8">8 aulas</option>
-                        <option value="10">10 aulas</option>
-                    </select>
-                </div>
-                <button class="btn-main" onclick="generateOrcamento()">VER VALORES</button>
-                <button class="btn-back" onclick="showPage(2)">← Voltar</button>
-            </div>
+            <button class="btn-text" onclick="showPage(2)">← Escolher outra categoria</button>
         </section>
 
         <section id="page4" class="page">
-            <h2>Seu Orçamento</h2>
-            <div id="result-display" class="result-card"></div>
-            <div class="actions">
-                <button class="btn-pdf" onclick="window.print()">SALVAR PDF</button>
-                <button class="btn-whats" onclick="contactWhats()">FALAR NO WHATSAPP</button>
-                <button class="btn-back" onclick="showPage(1)">NOVO ORÇAMENTO</button>
+            <h2 class="section-title">Seu Orçamento</h2>
+            <div id="result-display" class="result-box"></div>
+            <div class="action-buttons">
+                <button class="btn-primary btn-whatsapp" onclick="contactWhats()">FALAR COM CONSULTOR</button>
+                <button class="btn-secondary" onclick="window.print()">SALVAR PDF</button>
+                <button class="btn-text" onclick="showPage(1)">INÍCIO</button>
             </div>
         </section>
     </div>
